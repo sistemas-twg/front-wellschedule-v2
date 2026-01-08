@@ -252,7 +252,7 @@ const Calendario = () => {
           minute: "2-digit",
           hour12: false,
         }}
-        timeZone="UTC"
+       
         hiddenDays={[0, 6]}
         firstDay={1}
         dayHeaderFormat={{
