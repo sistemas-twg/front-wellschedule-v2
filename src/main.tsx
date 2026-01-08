@@ -22,12 +22,12 @@ import NotFound from "./pages/NoFound/NotFound.tsx";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
-      <Toaster position="bottom-right" richColors closeButton  />
+      <Toaster position="bottom-right" richColors closeButton />
       <Routes>
         {/* Redirección inicial */}
         {/* <Route path="/" element={<Navigate to="/dashboard" />} /> */}
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
+
         {/* Layout Dashboard */}
         <Route element={<PrivateRoutes />}>
           <Route element={<Layout />}>
@@ -37,7 +37,8 @@ createRoot(document.getElementById("root")!).render(
             <Route path="/salas" element={<Room />} />
             <Route path="/calendario" element={<Calendario />} />
             <Route path="/settings" element={<Settings />} />
-            
+            <Route path="*" element={<NotFound />} />
+
           </Route>
         </Route>
       </Routes>
