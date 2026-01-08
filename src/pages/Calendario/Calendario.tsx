@@ -181,8 +181,8 @@ const Calendario = () => {
       return {
         id: r.id,
         title: r.title,
-        start:r.startDate,
-        end,
+        start,
+        end: r.endDate,
         backgroundColor: roomColors[r.room.name],
         borderColor: roomColors[r.room.name],
         textColor: "#000000",
