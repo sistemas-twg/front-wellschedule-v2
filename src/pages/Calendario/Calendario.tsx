@@ -16,7 +16,7 @@ import * as Yup from "yup";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import roomStore from "@/store/room/room.store";
 import SchedulesStore from "@/store/schedules/schedule.store";
-import {  Trash2Icon } from "lucide-react";
+import { Trash2Icon } from "lucide-react";
 import { toast } from "sonner";
 import useAuthStore from "@/store/auth/auth.store";
 
@@ -253,9 +253,6 @@ const Calendario = () => {
           hour12: false,
         }}
         timeZone="UTC"
-
-
-
         hiddenDays={[0, 6]}
         firstDay={1}
         dayHeaderFormat={{
@@ -325,7 +322,7 @@ const Calendario = () => {
           return (
             <div className="relative flex h-full w-full flex-col items-center justify-center text-center text-xs text-white">
 
-            
+
               <img
                 src={
                   args.event.extendedProps?.roomId?.name === "Sala SmartFit"
@@ -359,9 +356,9 @@ const Calendario = () => {
                 </p>
 
                 <p className="text-[10px]">
-                  {args.event.start?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  {args.event.start?.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit", timeZone:"UTC"})}
                   -
-                  {args.event.end?.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  {args.event.end?.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit",timeZone:"UTC" })}
                 </p>
 
                 {isOwner && (
