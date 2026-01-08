@@ -159,26 +159,29 @@ const Calendario = () => {
   const transformReservationsToEvents = (reservations: any) => {
     return reservations?.map((r: any) => {
 
+      console.log("stardate", r.startDate)
+      console.log("Ingresa", new Date(r.startDate))
+
       // console.log("r", r)
-      // const start = new Date(r.startDate);
+      const start = new Date(r.startDate);
 
-      // const [hour, minute, second] = r.endDate
-      //   .split(":")
-      //   .map(Number);
+      const [hour, minute, second] = r.endDate
+        .split(":")
+        .map(Number);
 
-      // const end = new Date(start);
-      // end.setHours(hour, minute, second || 0, 0);
+      const end = new Date(start);
+      end.setHours(hour, minute, second || 0, 0);
 
 
-      // if (end <= start) {
-      //   end.setDate(end.getDate() + 1);
-      // }
+      if (end <= start) {
+        end.setDate(end.getDate() + 1);
+      }
 
       return {
         id: r.id,
         title: r.title,
-        start:r.startDate,
-        end:r.endDate,
+        start: r.startDate,
+        end: r.endDate,
         backgroundColor: roomColors[r.room.name],
         borderColor: roomColors[r.room.name],
         textColor: "#000000",
@@ -252,7 +255,7 @@ const Calendario = () => {
           minute: "2-digit",
           hour12: false,
         }}
-       
+
         hiddenDays={[0, 6]}
         firstDay={1}
         dayHeaderFormat={{
@@ -356,9 +359,9 @@ const Calendario = () => {
                 </p>
 
                 <p className="text-[10px]">
-                  {args.event.start?.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit", timeZone:"UTC"})}
+                  {args.event.start?.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" })}
                   -
-                  {args.event.end?.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit",timeZone:"UTC" })}
+                  {args.event.end?.toLocaleTimeString("es-ES", { hour: "2-digit", minute: "2-digit", timeZone: "UTC" })}
                 </p>
 
                 {isOwner && (
