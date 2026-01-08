@@ -18,6 +18,7 @@ import { io } from "socket.io-client";
 //     deleteSchedule: (id: string) => void;
 // }
 
+const url = 'https://wellschedule-production.up.railway.app'
 const SchedulesStore = create<any>((set, get) => ({
 
     schedules: [],
@@ -34,7 +35,7 @@ const SchedulesStore = create<any>((set, get) => ({
         if (endDate) params.append("endDate", endDate)
         console.log("params", params)
 
-        const response = await fetch(`http://localhost:3000/api/reservation?${params.toString()}`)
+        const response = await fetch(`${url}/api/reservation?${params.toString()}`)
         const data = await response.json()
 
         console.log("data", data)
@@ -45,7 +46,7 @@ const SchedulesStore = create<any>((set, get) => ({
         //evita crear multiples sockets
         if (get().socket) return;
         //inicializa el socket
-        const socket = io("http://localhost:3000");
+        const socket = io("https://wellschedule-production.up.railway.app");
         //escucha el evento RESERVATION_CREATED
         socket.on('EVENT_CREATED', (reservation) => {
             set((state: any) => ({
@@ -73,7 +74,7 @@ const SchedulesStore = create<any>((set, get) => ({
 
     getOneSchedule: async (id: string) => {
         set({ loading: true })
-        const response = await fetch(`http://localhost:3000/api/reservation/${id}`)
+        const response = await fetch(`${url}/api/reservation/${id}`)
         const data = await response.json()
         console.log("data", data)
         set({ schedule: data, loading: false })
@@ -83,7 +84,7 @@ const SchedulesStore = create<any>((set, get) => ({
         const token: any = useAuthStore.getState()
         try {
             set({ loading: true })
-            const response = await fetch(`http://localhost:3000/api/reservation/${id}`, {
+            const response = await fetch(`${url}/api/reservation/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -122,7 +123,7 @@ const SchedulesStore = create<any>((set, get) => ({
         const token: any = useAuthStore.getState();
         try {
             set({ loading: true });
-            const response = await fetch("http://localhost:3000/api/reservation", {
+            const response = await fetch(`${url}/api/reservation`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -155,7 +156,7 @@ const SchedulesStore = create<any>((set, get) => ({
         const token: any = useAuthStore.getState();
         try {
             set({ loading: true })
-            const response = await fetch(`http://localhost:3000/api/reservation/${id}`, {
+            const response = await fetch(`${url}/api/reservation/${id}`, {
                 method: "DELETE",
                 headers: {
                     "Content-Type": "application/json",

@@ -2,6 +2,9 @@ import { toast } from "sonner";
 import { create } from "zustand";
 import useAuthStore from "../auth/auth.store";
 
+
+const url = 'https://wellschedule-production.up.railway.app'
+
 const roleStore = create((set) => ({
 
     roles: [],
@@ -13,7 +16,7 @@ const roleStore = create((set) => ({
         const token: any = useAuthStore.getState();
         console.log("token", token)
         set({ loading: true })
-        const response = await fetch(`http://localhost:3000/api/roles?page=${page}&limit=${pageSize}`, {
+        const response = await fetch(`${url}/api/roles?page=${page}&limit=${pageSize}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -32,7 +35,7 @@ const roleStore = create((set) => ({
 
     getOne: async (id: string) => {
         set({ loading: true })
-        const response = await fetch(`http://localhost:3000/api/roles/${id}`)
+        const response = await fetch(`${url}/api/roles/${id}`)
         const data = await response.json()
         set({ rol: data, loading: false })
     }
@@ -41,7 +44,7 @@ const roleStore = create((set) => ({
     updateRole: async (id: string, body: any) => {
         try {
             set({ loading: true })
-            const response = await fetch(`http://localhost:3000/api/roles/${id}`, {
+            const response = await fetch(`${url}/api/roles/${id}`, {
                 method: "PATCH",
                 headers: {
                     "Content-Type": "application/json",
@@ -72,7 +75,7 @@ const roleStore = create((set) => ({
     createRole: async (role: any) => {
         try {
             set({ loading: true });
-            const response = await fetch("http://localhost:3000/api/roles", {
+            const response = await fetch(`${url}/api/roles`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -95,7 +98,7 @@ const roleStore = create((set) => ({
     deleteRole: async (id: string) => {
         try {
             set({ loading: true });
-            const response = await fetch(`http://localhost:3000/api/roles/${id}`, {
+            const response = await fetch(`${url}/api/roles/${id}`, {
                 method: "DELETE",
             });
 
