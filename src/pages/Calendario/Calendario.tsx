@@ -273,7 +273,7 @@ const Calendario = () => {
 
 
         selectable
-        select={(info) => {
+        select={() => {
           validation.resetForm()
           setIsEdit(false)
           // setSelectedSlot({

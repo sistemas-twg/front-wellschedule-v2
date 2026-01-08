@@ -7,7 +7,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
+
 import {
   Select,
   SelectContent,
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/select";
 import roomStore from "@/store/room/room.store";
 import { useEffect, useState } from "react";
-import { Formik, useFormik } from "formik";
+import {  useFormik } from "formik";
 import * as Yup from "yup";
 import InputForm from "@/components/Input/InputForm";
 import { toast } from "sonner";
@@ -29,12 +29,9 @@ const Room = () => {
   const { rooms, room, getAllRooms, createRoom, getOne, deleteRoom, updateRoom }: any =
     roomStore();
 
-  const [form, setForm]: any = useState({
-    name: "",
-    description: "",
-  });
 
-  const [romStatus, setRoomStatus] = useState(true);
+
+
 
   const [open, setOpen] = useState<any>(false);
   const [isEdit, setIsEdit] = useState(false);
