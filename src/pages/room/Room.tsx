@@ -74,27 +74,6 @@ const Room = () => {
     },
   });
 
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    console.log("form", form);
-    const roomForm = {
-      ...form,
-      status: romStatus,
-    };
-
-    console.log("roomForm", roomForm);
-  };
-
-  const handleForm: any = (e: any) => {
-    const { name, value }: any = e.target;
-
-    setForm((prev: any) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
-
   const handleEditRoom = async (id: string) => {
     setIsEdit(true);
     await getOne(id);
