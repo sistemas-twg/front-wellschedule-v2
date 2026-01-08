@@ -94,10 +94,6 @@ const Room = () => {
     }));
   };
 
-  const handleSelect = (value: string) => {
-    setRoomStatus(value === "true");
-    console.log("value", value === "true");
-  };
 
   const handleEditRoom = async (id: string) => {
     setIsEdit(true);

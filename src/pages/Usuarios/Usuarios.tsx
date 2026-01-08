@@ -41,7 +41,7 @@ const Usuarios = () => {
 
     {
       header: "Acciones",
-      cell: ({ row }: any) => (
+      cell: ({  }: any) => (
         <DataTableActions
           onEdit={() => {
             // handleEditRole(row.original.id)
