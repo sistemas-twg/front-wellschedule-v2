@@ -161,6 +161,7 @@ const Calendario = () => {
 
       console.log("stardate", r.startDate)
       console.log("Ingresa", new Date(r.startDate))
+      console.log("End", r.endDate)
 
       // console.log("r", r)
       const start = new Date(r.startDate);
@@ -180,7 +181,7 @@ const Calendario = () => {
       return {
         id: r.id,
         title: r.title,
-        start,
+        start:r.startDate,
         end,
         backgroundColor: roomColors[r.room.name],
         borderColor: roomColors[r.room.name],
